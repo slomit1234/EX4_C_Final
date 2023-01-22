@@ -1,10 +1,10 @@
-
 CFLAGS = -g -Wall
-OBJ = Graph.o Node.o Edge.o
 CC = gcc
 
-all: output functions
+clean:
+	rm -f *.o *.so $(OUTPUT)
 
+# units
 Graph.o: Graph.c Node.h Graph.h Edge.h
 	$(CC) -c $(CFLAGS) Graph.c
 
@@ -14,18 +14,13 @@ Node.o: Node.c Node.h Graph.h Edge.h
 Edge.o: Edge.c Node.h Graph.h Edge.h
 	$(CC) -c $(CFLAGS) Edge.c
 
-libfunctions.so: $(OBJ)
-	$(CC) -shared -fPIC -o libfunctions.so $(OBJ)
-
-functions: libfunctions.so
-
 Main.o: Main.c Node.h Graph.h Edge.h
 	$(CC) -c $(CFLAGS) Main.c
 
-output: Main.o libfunctions.so
-	$(CC) $(CFLAGS) -o Graph Main.o ./libfunctions.so
+Graph: Main.o Graph.o Node.o Edge.o
+	$(CC) $(CFLAGS) -o Graph Main.o Graph.o Node.o Edge.o
 
-.PHONY: all clean functions output
+# build
+all: Graph
 
-clean:
-	rm -f *.o *.so $(OUTPUT)
+.PHONY: all clean Graph

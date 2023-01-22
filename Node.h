@@ -6,6 +6,7 @@
 #include<string.h>
 #include "Edge.h"
 
+
 void createHead(struct Graph*, int );
 void createNode(struct Node*, int );
 void updateNode(struct Node*, int );

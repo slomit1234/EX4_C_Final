@@ -32,14 +32,17 @@ struct Graph
 #include"Edge.h"
 #include"Node.h"
 
+char* readinput(int* len);
+void OptionManager(char , char* , int );
+
 int* InitializeMatrix(struct Graph* , int );
 char* str_slice(char str[], int , int );
-char* readinput(int* len);
+
 char* getD(char input[], struct Graph* );
 char* getB(char input[], struct Graph* );
 char* getS(char s[], struct Graph* , int );
 char* getT(char input[], struct Graph* , int );
-void OptionManager(char , char* , int );
+
 void deleteGraph(struct Graph* );
 struct Graph* createGraph(char** , int );
 

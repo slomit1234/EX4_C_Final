@@ -1,7 +1,6 @@
 //#define _CRT_SECURE_NO_WARNINGS
 #include "Edge.h"
 
-
 int isEdgeExist(struct Edge* head, int src)
 {
     struct Edge* temp = head;

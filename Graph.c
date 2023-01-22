@@ -133,29 +133,6 @@ char* str_slice(char str[], int slice_from, int slice_to)
     return str;
 }
 
-char* readinput(int* len)
-{
-    int flag = 1;
-    char* input = NULL;
-    char tempbuf[200];
-    size_t templen = 0;
-    do {
-        fgets(tempbuf, 200, stdin);
-        templen = strlen(tempbuf);
-        input = (char*)malloc((templen+1)*sizeof(char));
-        //input = (char*)malloc(input, templen + 1);
-        strcpy(input, tempbuf);
-        //strncat(input, tempbuf, templen);
-        //inputlen += templen;
-        //tempbuf[200 - 2] = '\n';
-        flag = 0;
-    } while (flag);
-    //printf("%d,%d", *len, templen);
-    *len = (int)templen;
-    return input;
-}
-
-
 void deleteGraph(struct Graph* g)
 {
     struct Node* temp1 = g->head;
@@ -406,16 +383,8 @@ char* getT(char input[], struct Graph* g, int numOfNodes)
     }
     //initilize 
     mat = InitializeMatrix(g, numOfNodes);
-    /*
-    for (int i = 0; i < numOfNodes; i++)
-    {
-        for (int j = 0; j < numOfNodes; j++)
-        {
-            printf("%d\t", mat[i*numOfNodes+j]);
-        }
-        printf("\n");
-    }
-    */
+
+
 
     T_shortest_path(mat, numOfNodes, toSend, num_nodes);
     printf("\n");
@@ -479,6 +448,29 @@ void OptionManager(char choise, char* input, int lenStr)
     free(graph);
 
 }
+
+char* readinput(int* len)
+{
+    int flag = 1;
+    char* input = NULL;
+    char tempbuf[200];
+    size_t templen = 0;
+    do {
+        fgets(tempbuf, 200, stdin);
+        templen = strlen(tempbuf);
+        input = (char*)malloc((templen+1)*sizeof(char));
+        //input = (char*)malloc(input, templen + 1);
+        strcpy(input, tempbuf);
+        //strncat(input, tempbuf, templen);
+        //inputlen += templen;
+        //tempbuf[200 - 2] = '\n';
+        flag = 0;
+    } while (flag);
+    //printf("%d,%d", *len, templen);
+    *len = (int)templen;
+    return input;
+}
+
 
 void new_shortest_path_dijkstra(int src, int dest, int num_vertices, int* edges) {
     // Create a dist array to store the shortest distance from src to each vertex
@@ -567,18 +559,9 @@ void T_shortest_path(int* adj_matrix, int num_vertices, int* nods, int num_nodes
         permutation[i] = i; //##need to check
     }
 
-    /*
-   for (int x = 0; x< num_nodes; x++)
-    {
-        for (int y= 0; y< num_nodes; y++)
-        {
-            printf("%d\t", shortest_path[x*num_nodes+y]);
-        }
-        printf("\n");
-    }
-    */
     permute(permutation, 0, num_nodes-1, num_nodes, adj_matrix, shortest_path, shortest_path_length); //changed num_vertics to num_nods
-
+	
+	//int theShortestPathElement = 0;
     if (theShortestPathElement < INF)
     {
         printf("TSP shortest path: %d", theShortestPathElement);
@@ -657,13 +640,7 @@ void permute(int* arr, int l, int r, int num_vertices, int* edges, int* shortest
     if (l == r) {
         // Calculate the cost of the current permutation
         int cost = calculate_path_cost(arr, num_vertices, edges, shortest_path, shortest_path_length);
-        /*
-        printf("Permutation: ");
-        for (int i = 0; i <= r; i++) {
-            printf("%d ", arr[i]);
-        }
-        printf("Cost: %d\n", cost);
-        */
+
         if (cost < theShortestPathElement)
         {
             theShortestPathElement = cost;

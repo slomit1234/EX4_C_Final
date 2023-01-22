@@ -5,7 +5,6 @@
 #include"Node.h"
 
 
-
 void createHead(struct Graph* head, int src)
 {
     struct Node* head1 = (struct Node*)malloc(sizeof(struct Node));
