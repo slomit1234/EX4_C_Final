@@ -1,9 +1,9 @@
 //#define _CRT_SECURE_NO_WARNINGS
-#include "Edge.h"
+#include "edge.h"
 
-int isEdgeExist(struct Edge* head, int src)
+int isEdgeExist(struct edge* head, int src)
 {
-    struct Edge* temp = head;
+    struct edge* temp = head;
     int flag = 0;
     if (temp->src != src)
     {
@@ -25,10 +25,10 @@ int isEdgeExist(struct Edge* head, int src)
     return flag;
 }
 
-void removeEdge(struct Edge* head, int src)
+void removeEdge(struct edge* head, int src)
 {
-    struct Edge* temp = head;
-    struct Edge* toDelete = NULL;
+    struct edge* temp = head;
+    struct edge* toDelete = NULL;
 
     if (!temp)
     {
@@ -62,7 +62,7 @@ void removeEdge(struct Edge* head, int src)
 
 void createStart(struct Graph* start, int src, int dest, int weight)
 {
-    struct Edge* start1 = (struct Edge*)malloc(sizeof(struct Edge));
+    struct edge* start1 = (struct edge*)malloc(sizeof(struct edge));
 
     if (start1)
     {
@@ -75,11 +75,11 @@ void createStart(struct Graph* start, int src, int dest, int weight)
     }
 }
 
-void updateEdge(struct Edge* head, int src)
+void updateEdge(struct edge* head, int src)
 {
     if (head != NULL)
     {
-        struct Edge* temp = head;
+        struct edge* temp = head;
         while (temp->next != NULL)
         {
             if (temp->src == src)
@@ -93,8 +93,8 @@ void updateEdge(struct Edge* head, int src)
 
 void createEdge(struct Graph* start, int src, int dest, int weight)
 {
-    struct Edge* temp = start->start;
-    struct Edge* toAdd = (struct Edge*)malloc(sizeof(struct Edge));
+    struct edge* temp = start->start;
+    struct edge* toAdd = (struct edge*)malloc(sizeof(struct edge));
 
     if (toAdd)
     {
