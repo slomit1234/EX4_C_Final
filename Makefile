@@ -5,22 +5,22 @@ clean:
 	rm -f *.o *.so $(OUTPUT)
 
 # units
-Graph.o: Graph.c Node.h Graph.h Edge.h
-	$(CC) -c $(CFLAGS) Graph.c
+graph.o: graph.c node.h graph.h edge.h
+	$(CC) -c $(CFLAGS) graph.c
 
-Node.o: Node.c Node.h Graph.h Edge.h
-	$(CC) -c $(CFLAGS) Node.c
+node.o: node.c node.h graph.h edge.h
+	$(CC) -c $(CFLAGS) node.c
 
-Edge.o: Edge.c Node.h Graph.h Edge.h
-	$(CC) -c $(CFLAGS) Edge.c
+edge.o: edge.c node.h graph.h edge.h
+	$(CC) -c $(CFLAGS) edge.c
 
-Main.o: Main.c Node.h Graph.h Edge.h
-	$(CC) -c $(CFLAGS) Main.c
+main.o: main.c node.h graph.h edge.h
+	$(CC) -c $(CFLAGS) main.c
 
-Graph: Main.o Graph.o Node.o Edge.o
-	$(CC) $(CFLAGS) -o Graph Main.o Graph.o Node.o Edge.o
+graph: main.o graph.o node.o edge.o
+	$(CC) $(CFLAGS) -o graph main.o graph.o node.o edge.o
 
 # build
-all: Graph
+all: graph
 
-.PHONY: all clean Graph
+.PHONY: all clean graph
