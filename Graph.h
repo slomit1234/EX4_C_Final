@@ -49,7 +49,7 @@ void N_shortest_path_dijkstra(int src, int dest, int num_vertices, int* edges);
 
 void new_shortest_path_dijkstra(int , int , int , int* ); //V
 void permute(int* arr, int l, int r, int num_vertices, int* edges, int* shortest_path, int* shortest_path_length);
-int calculate_path_cost(int* permutation, int num_nodes, int num_vertices, int* edges, int* shortest_path);
+int calculate_path_cost(int* permutation, int num_nodes, int* num_vertices, int* edges, int* shortest_path);
 void T_shortest_path(int* adj_matrix, int num_vertices, int* nods, int num_nodes);
 int forT_dijkstra(int src, int dest, int num_vertices, int* edges);
 
