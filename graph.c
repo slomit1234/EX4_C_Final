@@ -454,7 +454,6 @@ char* readinput(int* len)
     //int flag = 1;
     char* input = NULL;
     char tempbuff[500];
-	int count = 0;
     size_t templen = 0;
 	
 	int i = 0;
