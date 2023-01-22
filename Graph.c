@@ -1,13 +1,5 @@
-#define _CRT_SECURE_NO_WARNINGS
+//#define _CRT_SECURE_NO_WARNINGS
 #include "Graph.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include<limits.h>
-#include <ctype.h>
-#include "Node.h"
-#include "Edge.h"
-#define MAX_NODES 100
 
 int theShortestPathElement = INF;
 
@@ -27,7 +19,7 @@ int* InitializeMatrix(struct Graph* g, int numOfNodes)
 
     if (!mat)
     {
-        return;
+        return NULL;
     }
 
     for (int i = 0; i < numOfNodes; i++)
@@ -99,8 +91,9 @@ char* str_slice(char str[], int slice_from, int slice_to)
     if (str[0] == '\0')
         return NULL;
 
-    char* buffer;
-    size_t str_len, buffer_len;
+    //char* buffer;
+    size_t str_len;
+    //size_t buffer_len;
 
     // for negative indexes "slice_from" must be less "slice_to"
     if (slice_to < 0 && slice_from < slice_to) {
@@ -114,7 +107,7 @@ char* str_slice(char str[], int slice_from, int slice_to)
         if (abs(slice_from) > str_len)
             slice_from = (-1) * str_len;
 
-        buffer_len = slice_to - slice_from;
+        //buffer_len = slice_to - slice_from;
         str += (str_len + slice_from);
 
         // for positive indexes "slice_from" must be more "slice_to"
@@ -126,7 +119,7 @@ char* str_slice(char str[], int slice_from, int slice_to)
         if (slice_from > str_len - 1)
             return NULL;
 
-        buffer_len = slice_to - slice_from;
+        //buffer_len = slice_to - slice_from;
         str += slice_from;
 
         // otherwise, returns NULL
@@ -274,9 +267,8 @@ char* getD(char input[], struct Graph* g)
 
     if (!temp)
     {
-        return;
+        return NULL;
     }
-    
 
 
     while (temp != NULL && temp->next != NULL)
@@ -473,7 +465,7 @@ void OptionManager(char choise, char* input, int lenStr)
             break;
         }
         
-        if (input != NULL || input == EOF)
+        if (input != NULL)
         {
             choise = input[0];
         }
@@ -543,8 +535,8 @@ void T_shortest_path(int* adj_matrix, int num_vertices, int* nods, int num_nodes
     int* shortest_path = (int*)malloc(num_nodes * num_nodes * sizeof(int));
     int* shortest_path_length = (int*)malloc(num_nodes * num_nodes * sizeof(int));
     int dest = 0;
-    int end = 0;
-    int temp = 0;
+    //int end = 0;
+    //int temp = 0;
     // Initialize the array with INF
     for (int i = 0; i < num_nodes; i++) {
         for (int j = 0; j < num_nodes; j++) {
@@ -603,7 +595,7 @@ void T_shortest_path(int* adj_matrix, int num_vertices, int* nods, int num_nodes
 }
 
 // Function to calculate the cost of a given permutation of the important nodes
-int calculate_path_cost(int* permutation, int num_nodes, int num_vertices, int* edges, int* shortest_path) {
+int calculate_path_cost(int* permutation, int num_nodes, int* num_vertices, int* edges, int* shortest_path) {
     int cost = 0;
     for (int i = 0; i < num_nodes - 1; i++) {
         cost += shortest_path[permutation[i] * num_nodes + permutation[i + 1]];

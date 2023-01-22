@@ -1,8 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include "Graph.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include "Node.h"
+//#define _CRT_SECURE_NO_WARNINGS
 #include "Edge.h"
 
 

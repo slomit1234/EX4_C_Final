@@ -1,9 +1,9 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include "Graph.h"
-#include"Node.h"
+//#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
-#include "Edge.h"
+//#include "Graph.h"
+#include"Node.h"
+
 
 
 void createHead(struct Graph* head, int src)
