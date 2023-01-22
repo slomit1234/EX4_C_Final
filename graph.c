@@ -453,7 +453,8 @@ char* readinput(int* len)
 {
     //int flag = 1;
     char* input = NULL;
-    char tempbuff[500];
+	char tempbuff[500];
+	//int count = 0;
     size_t templen = 0;
 	
 	int i = 0;
@@ -518,17 +519,15 @@ void new_shortest_path_dijkstra(int src, int dest, int num_vertices, int* edges)
     // Print the shortest distance from src to dest
     if (dist[dest] < INF)
     {
-        printf("Dijsktra shortest path: %d\n", dist[dest]);
+        printf("Dijsktra shortest path: %d \n", dist[dest]);
     }
     else
     {
-        printf("Dijsktra shortest path: %d\n", -1);
+        printf("Dijsktra shortest path: %d \n", -1);
     }
 
     free(dist);
     free(visited);
-
-    printf("\n");
 }
 
 void T_shortest_path(int* adj_matrix, int num_vertices, int* nods, int num_nodes) {
@@ -573,11 +572,11 @@ void T_shortest_path(int* adj_matrix, int num_vertices, int* nods, int num_nodes
 	//int theShortestPathElement = 0;
     if (theShortestPathElement < INF)
     {
-        printf("TSP shortest path: %d", theShortestPathElement);
+        printf("TSP shortest path: %d \n", theShortestPathElement);
     }
     else
     {
-        printf("TSP shortest path: %d", -1);
+        printf("TSP shortest path: %d \n", -1);
     }
 
     free(permutation);
